@@ -12,7 +12,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     int x, y;
     private Casilla[][] casillas;
     private boolean activo = true;
+    RelativeLayout btnImagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnImagen=(RelativeLayout)findViewById(R.id.btnImagen);
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.layout1);
         fondo = new Tablero(this);
@@ -45,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void reiniciar(View v) {
+        btnImagen.setBackgroundResource(R.mipmap.ic_happy);
+
         casillas = new Casilla[8][8];
         for (int f = 0; f < 8; f++) {
             for (int c = 0; c < 8; c++) {
@@ -71,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                             (int) event.getY())) {
                         casillas[f][c].destapado = true;
                         if (casillas[f][c].contenido == 80) {
+                            btnImagen.setBackgroundResource(R.mipmap.ic_cry);
+
                             Toast.makeText(this, "¡Boom! Perdiste.",
                                     Toast.LENGTH_LONG).show();
                             activo = false;
@@ -81,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 }
             }
         if (gano() && activo) {
+            btnImagen.setBackgroundResource(R.mipmap.ic_love);
             Toast.makeText(this, "¡Ganaste!", Toast.LENGTH_LONG).show();
             activo = false;
         }

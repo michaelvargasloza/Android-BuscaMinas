@@ -4,30 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnReiniciar"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/lytUpper"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="1dp"
-        android:text="Reiniciar"
-        android:onClick="reiniciar"/>
+        android:weightSum="5"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnSalir"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnReiniciar"
-        android:layout_marginTop="1dp"
-        android:text="Salir"
-        android:onClick="salir"/>
+        <Button
+            android:id="@+id/btnReiniciar"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="2"
+            android:layout_margin="1dp"
+            android:text="Reiniciar"
+            android:onClick="reiniciar"/>
+
+        <RelativeLayout
+            android:id="@+id/btnImagen"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_margin="1dp"
+            android:background="@mipmap/ic_happy"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="2"
+            android:layout_below="@id/btnReiniciar"
+            android:layout_marginTop="1dp"
+            android:text="Salir"
+            android:onClick="salir"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/btnSalir"
+        android:layout_below="@id/lytUpper"
         android:orientation="horizontal"></LinearLayout>
 
 
